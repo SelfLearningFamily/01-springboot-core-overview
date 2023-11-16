@@ -12,8 +12,12 @@ public class DemoController {
     //define private field for dependency
     private Coach myCoach;
 
+    DemoController(){
+        System.out.println("in constructor: "+ getClass().getSimpleName());
+    }
+
     @Autowired
-    public void setCoach( Coach theCoach){
+    public void setCoach(@Qualifier("cricketCoach") Coach theCoach){
         myCoach = theCoach;
     }
 //@Qualifier("trackCoach")

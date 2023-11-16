@@ -11,19 +11,27 @@ public class DemoController {
 
     //define private field for dependency
     private Coach myCoach;
-
-    DemoController(){
-        System.out.println("in constructor: "+ getClass().getSimpleName());
-    }
+    private Coach anotherCoach;
 
     @Autowired
-    public void setCoach(@Qualifier("cricketCoach") Coach theCoach){
-        myCoach = theCoach;
+    DemoController(@Qualifier("cricketCoach") Coach theCoach, @Qualifier("cricketCoach") Coach anotherCoach){
+        System.out.println("in constructor: "+ getClass().getSimpleName());
+        this.myCoach = theCoach;
+        this.anotherCoach = anotherCoach;
     }
-//@Qualifier("trackCoach")
+
+//    @Autowired
+//    public void setCoach(@Qualifier("cricketCoach") Coach theCoach){
+//        myCoach = theCoach;
+//    }
     @GetMapping("/dailyworkout")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
+    }
+
+    @GetMapping("/check")
+    public String check(){
+        return "comparing Beams, mycoach == anotherCoach: " + (myCoach ==  anotherCoach);
     }
 
 }

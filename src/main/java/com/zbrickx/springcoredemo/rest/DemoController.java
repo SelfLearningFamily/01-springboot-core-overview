@@ -13,12 +13,19 @@ public class DemoController {
     private Coach myCoach;
     private Coach anotherCoach;
 
+//    @Autowired
+//    DemoController(@Qualifier("cricketCoach") Coach theCoach, @Qualifier("cricketCoach") Coach anotherCoach){
+//        System.out.println("in constructor: "+ getClass().getSimpleName());
+//        this.myCoach = theCoach;
+//        this.anotherCoach = anotherCoach;
+//    }
+
     @Autowired
-    DemoController(@Qualifier("cricketCoach") Coach theCoach, @Qualifier("cricketCoach") Coach anotherCoach){
+    DemoController(@Qualifier("aquatic") Coach theCoach){
         System.out.println("in constructor: "+ getClass().getSimpleName());
         this.myCoach = theCoach;
-        this.anotherCoach = anotherCoach;
     }
+
 
 //    @Autowired
 //    public void setCoach(@Qualifier("cricketCoach") Coach theCoach){
